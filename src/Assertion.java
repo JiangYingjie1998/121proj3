@@ -1,6 +1,7 @@
 public class Assertion {
     /* You'll need to change the return type of the assertThat methods */
     static Object assertThat(Object o) {
+        String className = o.getClass().getName();
         throw new UnsupportedOperationException();
     }
 
