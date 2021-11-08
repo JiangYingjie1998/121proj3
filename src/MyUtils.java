@@ -6,25 +6,59 @@ import java.util.*;
  * @since 2021/11/4 19:56
  */
 public class MyUtils {
-    public @AfterClass
-    void bbb() {
-        print("AfterClass");
-    }
-
-    public @Test
-    void a() {
-        throw new ArrayIndexOutOfBoundsException();
-    }
-
-    public @Test
-    void b() {
-        print("test b");
-    }
+//    public @AfterClass
+//    void bbb() {
+//        print("AfterClass");
+//    }
+//
+//    public @Test
+//    void a() {
+//        throw new ArrayIndexOutOfBoundsException();
+//    }
+//
+//    public @Test
+//    void b() {
+//        print("test b");
+//    }
 
     public static void main(String[] args) {
-//        HashMap<String, Throwable> testResults = Unit.testClass("MyUtils");
-//        print("1111111111111111111");
+        HashMap<String, Object[]> result = Unit.quickCheckClass("MyUtils");
+        return;
     }
+
+//    @Property
+//    public boolean absNonNeg(@IntRange(min = -10, max = 10) Integer i) {
+//        return Math.abs(i) >= 0;
+//    }
+//
+//    @Property
+//    public boolean startWithA(@StringSet(strings = {"Axxx", "axxx", "Bxx", "xxxxA", "xxaxx"}) String s) {
+//        return s.startsWith("A");
+//    }
+
+    @Property
+    public boolean sumLessThan10(@ListLength(min = 0, max = 2) List<@IntRange(min = 5, max = 7) Integer> list) {
+//        return list.stream().mapToInt(Integer::intValue).sum() < 10;
+        return true;
+    }
+
+/*    @Property
+    public boolean testFoo(@ForAll(name = "genIntSet", times = 10) Object o) {
+        Set s = (Set) o;
+        s.add("foo");
+        return s.contains("foo");
+    }
+
+    int count = 0;
+
+    public Object genIntSet() {
+        Set s = new HashSet();
+        for (int i = 0; i < count; i++) {
+            s.add(i);
+        }
+        count++;
+        return s;
+    }*/
 
     public static boolean isNotEmpty(Collection<?> list) {
         return list != null && list.size() > 0;

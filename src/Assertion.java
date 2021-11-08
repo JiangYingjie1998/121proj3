@@ -1,19 +1,21 @@
 public class Assertion {
     /* You'll need to change the return type of the assertThat methods */
+
+
+
     static Object assertThat(Object o) {
-        String className = o.getClass().getName();
-        throw new UnsupportedOperationException();
+        return new Res<>(o);
     }
 
-    static Object assertThat(String s) {
-        throw new UnsupportedOperationException();
+    static Res<String> assertThat(String s) {
+        return new Res<>(s);
     }
 
-    static Object assertThat(boolean b) {
-        throw new UnsupportedOperationException();
+    static Res<Boolean> assertThat(boolean b) {
+        return new Res<>(b);
     }
 
-    static Object assertThat(int i) {
-        throw new UnsupportedOperationException();
+    static Res<Integer> assertThat(int i) {
+        return new Res<>(i);
     }
 }
